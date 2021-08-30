@@ -1,7 +1,12 @@
 <template>
   <div>
     dddd
-    <VueDragResize :isActive="true" :w="width" :h="width" v-on:resizing="resize" v-on:dragging="resize">
+    <VueDragResize
+      :w="width" :h="width" 
+      v-on:resizing="resize" 
+      v-on:dragging="resize"
+      
+    >
       <img src="../assets/bag.png" alt=""
         :style="{width:width+'px',height:width+'px'}"
       >
@@ -13,7 +18,7 @@
 import VueDragResize from 'vue-drag-resize';
 
 export default {
-  name: 'Tdrag',
+  name: 'Resize',
 
   components: {
     VueDragResize
@@ -30,7 +35,7 @@ export default {
 
   methods: {
     resize(newRect) {
-      console.log("dddd",newRect)
+      console.log("dddd",newRect,newRect.isActive)
       this.width = newRect.width;
       this.height = newRect.height;
       this.top = newRect.top;

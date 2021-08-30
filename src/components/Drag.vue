@@ -4,8 +4,12 @@
     手表层级{{temp[1]}}
     <VueDragResize
         :w="100" :h="100" :z="temp[0]"
+        :x="10" :y="10"
+        contentClass="drag"
         :parent-limitation="true"
+        :is-draggable="true"
         :is-resizable="false" @clicked="act(0)"
+        @dragging="dragging"
     >
       <img src="../assets/bag.png" alt=""
         :style="{width:wid+'px'}"
@@ -14,9 +18,11 @@
     <VueDragResize
         :w="100" :h="100" :z="temp[1]"
         :x="200" :y="100"
+        :is-active="false"
         :parent-limitation="true"
         :is-resizable="false"
         @clicked="act(1)"
+        @activated="onActivated"
     >
       <img src="../assets/watch.png" alt=""
            :style="{width:wid+'px'}"
@@ -49,7 +55,16 @@ export default {
       // this.temp=this.temp.splice(0)
       this.$forceUpdate()
       console.log(this.temp)
-
+    },
+    dragging(newRect){
+      console.log("变化",newRect.width)
+      console.log("变化",newRect.height)
+      console.log("变化",newRect.top)
+      console.log("变化",newRect.left)
+    },
+    //点击聚焦到这个元素时才调用
+    onActivated(){
+      console.log("首次点击")
     }
   }
 }
@@ -63,5 +78,8 @@ export default {
   border: 1px solid red;
   position: relative;
   margin: 0 auto;
+}
+.drag{
+  border: 2px solid red;
 }
 </style>

@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <router-link to="/">素材拖动</router-link> | 
-    <router-link to="/t">层级</router-link>
+    <router-link to="/resize">缩放</router-link>
 
 
     <router-view></router-view>
